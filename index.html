@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Netbook</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+
+    <!-- Flowbite CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.3/dist/flowbite.min.css" />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+
+
+    <script>
+        tailwind.config = {
+            theme: {
+                fontFamily: {
+                    'sans': ['Inter'],
+                    'serif': ['Inter'],
+                    'mono': ['Inter'],
+                    'display': ['Inter'],
+                    'body': ['Inter'],
+                },
+                container: {
+                    center: true,
+                    screens: {
+                        // sm: '515px',
+                        lg: '1170px',
+                    },
+                },
+                extend: {
+                    colors: {
+                        myBlue: '#217BF4',
+                        footerDark: '#20202D'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style type="text/tailwindcss">
+        @layer components {
+            /* Custom Button */
+            .btn-blue, .btn-blue-light, .btn-blue-outline {
+                @apply hover:shadow-lg hover:-translate-y-1 hover:scale-105 transition ease-in-out duration-300
+            }
+            
+            /* Custom Card */
+            .card {
+                @apply bg-white rounded-[14px] hover:shadow-lg hover:border-none hover:-translate-y-1 transition ease-in-out duration-300
+            }
+
+            /* Custom Gradient */
+            .gradient-blue {
+                @apply bg-gradient-to-br from-[#5CA1FE] to-[#217BF4]
+            }
+            .gradient-danger {
+                @apply bg-gradient-to-br from-[#FF858A] to-[#F04148]
+            }
+            .gradient-warning {
+                @apply bg-gradient-to-br from-[#FFD085] to-[#FFAF2E]
+            }
+            .bg-gradient-br {
+                @apply bg-gradient-to-br from-white to-[#D4E7FE]
+            }
+            .bg-gradient-center {
+                @apply bg-gradient-to-b from-white via-[#F1F6FD] to-white
+            }
+
+            /* Custom Shadow */
+            .shadow-blue {
+                @apply shadow-[0px_10px_22px_-2px_rgba(109,_171,_255,_0.36)]
+            }
+            .shadow-danger {
+                @apply shadow-[0px_8px_22px_-2px_rgba(248,_87,_94,_0.3)]
+            }
+            .shadow-warning {
+                @apply shadow-[0px_10px_22px_-2px_rgba(250,_186,_84,_0.3)]
+            }
+
+            /* Custom Something */
+            #achievement .card {
+                @apply border
+            }
+            #community .box-image {
+                @apply h-fit w-fit rounded-3xl text-white px-4 py-5
+            }
+            #header.bg-scroll-offset {
+                @apply border-b-[1px] border-myBlue/10 bg-white/90 backdrop-blur
+            }
+            #members .btn-blue {
+                @apply rounded-xl py-5 bg-transparent hover:bg-myBlue/100 hover:text-[#ffffff!important] hover:shadow-blue scale-100 translate-y-0
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Header -->
+    <nav id="header" class="fixed w-full bg-transparent transition ease-in-out duration-1000 z-10">
+        <div class="container flex flex-wrap lg:flex-nowrap justify-between items-center gap-5 lg:gap-[70px] my-[18px]">
+
+            <!-- Box Image -->
+            <div class="img-box">
+                <a href="#hero"><img src="assets/images/logo.png" alt=""></a>
+            </div>
+
+            <!-- Button Collapse -->
+            <button id="button-collapsed" data-collapse-toggle="navbar-defaults" type="button" class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-defaults" aria-expanded="false">
+                <span class="sr-only">Open main menu</span>
+                <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
+            </button>
+
+            <!-- Menu Collapse -->
+            <div id="navbar-defaults" class="hidden lg:block w-full">
+
+                <!-- Menu Container -->
+                <div class="flex flex-col lg:flex-row gap-5 items-center justify-between">
+                    
+                    <!-- Box Menu -->
+                    <div class="menu-navigation flex items-center">
+                        <ul class="flex flex-col lg:flex-row items-center gap-8">
+
+                            <li><a href="#hero" class="active">Home</a></li>
+                            <li>
+                                <div class="item-dropdown flex items-center gap-[5px]">
+                                    <a href="#community">Community</a>
+                                    <img src="assets/images/caret-down.png" class="object-contain" alt="">
+                                </div>
+                            </li>
+                            <li><a href="#!">Blog</a></li>
+                            <li><a href="#!">Events</a></li>
+                            
+                        </ul>
+                    </div>
+
+                    <!-- Box Action -->
+                    <div class="menu-action flex flex-col lg:flex-row items-center gap-[42px]">
+
+                        <div class="search-box flex items-center gap-2">
+
+                            <div class="img-box">
+                                <img src="assets/images/search-icon.png" class="object-contain" alt="">
+                            </div>
+
+                            <form action="#!" class="w-full">
+                                <input type="text" placeholder="Search here..." class="w-full bg-transparent border-none focus:ring-transparent">
+                            </form>
+
+                        </div>
+
+                        <div class="button-box">
+                            <button class="btn-blue font-semibold">Log In</button>
+                        </div>
+
+                    </div>
+                </div>
+                
+            </div>
+
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section id="hero" class="bg-gradient-br pt-[100px]">
+        <div class="container flex lg:flex-nowrap flex-wrap-reverse justify-center lg:justify-between items-center gap-5">
+
+            <!-- Box Title -->
+            <div class="box-title">
+
+                <button class="btn-blue-light bg-myBlue/10 mb-5">Netbook Community</button>
+                <h1 class="mb-[18px]">Your Solutions For Community!</h1>
+                <p class="mb-[42px]">More than 2 billion people in over countries use socibook to stay in touch with friends & family.</p>
+
+                <div class="action flex gap-[18px]">
+                    <button class="btn-blue">About More</button>
+                    <button class="btn-blue-outline">Invite Friend</button>
+                </div>
+
+            </div>
+
+            <!-- Box Image -->
+            <div class="box-image">
+                <img src="assets/images/triangle.png" alt="">
+            </div>
+
+        </div>
+    </section>
+
+    <!-- About Us -->
+    <section id="about">
+        <div class="container flex flex-wrap lg:flex-nowrap items-center justify-center lg:justify-between gap-5">
+
+            <!-- Box Title -->
+            <div class="box-title">
+
+                <span class="mb-[10px]">Whats Netboks?</span>
+                <h2 class="mb-4">Why Join to Netbook Social Network?</h2>
+                <p class="mb-9">Recent surveys have indicated that small businesses recognise the need they have to connect with consumer.</p>
+
+                <!-- List -->
+                <ul>
+                    <li class="flex items-center gap-3">
+                        <img src="assets/images/dot-blue.png" alt="">
+                        Groups
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <img src="assets/images/dot-blue.png" alt="">
+                        Messages
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <img src="assets/images/dot-blue.png" alt="">
+                        Share
+                    </li>
+                </ul>
+
+            </div>
+
+            <!-- Box Image -->
+            <div class="box-image flex items-center gap-[30px]">
+
+                <div class="box-image-vertical">
+                    <img src="assets/images/image-about-3.png" alt="">
+                </div>
+
+                <div class="box-image-square flex flex-col gap-[30px]">
+                    <img src="assets/images/image-about-2.png" alt="">
+                    <img src="assets/images/image-about-1.png" alt="">
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Achievement -->
+    <section id="achievement">
+        <div class="container flex flex-wrap-reverse lg:flex-nowrap justify-center lg:justify-between items-center gap-12">
+
+            <!-- Box Cards -->
+            <div class="box-cards flex flex-wrap md:flex-nowrap gap-6">
+
+                <!-- Card -->
+                <div class="card w-full px-11 py-11">
+                    <div class="card-title flex items-center mb-[39px] gap-6">
+                        <div class="box-image">
+                            <img src="assets/images/star.png" alt="">
+                        </div>
+                        <h5>4.8 Rating</h5>
+                    </div>
+
+                    <div class="card-member flex gap-4 mb-10">
+                        <div class="box-image flex items-center">
+                            <img src="assets/images/profile-1.webp" alt="Profile 1" class="w-6 h-6 rounded-full border border-white object-cover -mr-2">
+                            <img src="assets/images/profile-2.jpeg" alt="Profile 2" class="w-6 h-6 rounded-full border border-white object-cover -mr-2">
+                            <img src="assets/images/profile-3.jpeg" alt="Profile 3" class="w-6 h-6 rounded-full border border-white object-cover -mr-2">
+                        </div>
+                        <p><span>+836k</span> Members</p>
+                    </div>
+
+                    <p class="mb-10">More than 2 billion we people over countries use socibooks we to stay in touch with friends.</p>
+
+                    <div class="card-action">
+                        <a href="#!" class="flex items-center gap-2 hover:text-myBlue">
+                            Join Our Community
+                            <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1.5 6H12.5" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="stroke-current"/>
+                                <path d="M8 1.5L12.5 6L8 10.5" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="stroke-current"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card -->
+                <div class="card w-full px-11 py-11">
+                    <div class="card-title flex items-center mb-[39px] gap-6">
+                        <div class="box-image">
+                            <img src="assets/images/trophy.png" alt="">
+                        </div>
+                        <h5>Awwards</h5>
+                    </div>
+
+                    <div class="card-member flex gap-4 mb-10">
+                        <div class="box-image flex items-center">
+                            <img src="assets/images/profile-1.webp" alt="Profile 1" class="w-6 h-6 rounded-full border border-white object-cover">
+                        </div>
+                        <p>Best of <span>2021</span> on Github</p>
+                    </div>
+
+                    <p class="mb-10">More than 2 billion we people over countries use socibooks we to stay in touch with friends.</p>
+
+                    <div class="card-action">
+                        <a href="#!" class="flex items-center gap-2 hover:text-myBlue">
+                            Go To Awards
+                            <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1.5 6H12.5" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="stroke-current"/>
+                                <path d="M8 1.5L12.5 6L8 10.5" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="stroke-current"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Box Title -->
+            <div class="box-title">
+
+                <span class="mb-[10px]">Our Achievement</span>
+                <h2 class="mb-[18px]">We are Connecting You The Digital Life.</h2>
+                <p class="mb-[38px]">The scope the Social Media becomes crucial Is helps the business to directly engage with their needs and wants.</p>
+                
+                <div class="action">
+                    <button class="btn-blue flex gap-5 items-center px-[38px]">
+                        Discover me
+                        <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1.5 6H12.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M8 1.5L12.5 6L8 10.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Community -->
+    <section id="community" class="bg-gradient-center">
+        <div class="container flex flex-col items-center">
+
+            <div class="box-title text-center mb-16">
+                <span class="mb-2">Our Community</span>
+                <h2 class="mb-5">Community Main Feature</h2>
+                <p>The wise man therefore always holds in these matters to this principle of selection.</p>
+            </div>
+
+            <div class="box-cards grid grid-cols-1 grid-rows-6 lg:grid-cols-2 lg:grid-rows-3 gap-11 ">
+                <div class="card flex flex-col md:flex-row gap-9 p-10">
+                    <div class="box-image shadow-blue gradient-blue">
+                        <svg width="35" height="28" viewBox="0 0 35 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M11.6349 14.3045C15.1525 14.3045 18.0042 11.4528 18.0042 7.93519C18.0042 4.41756 15.1525 1.56592 11.6349 1.56592C8.11726 1.56592 5.26562 4.41756 5.26562 7.93519C5.26562 11.4528 8.11726 14.3045 11.6349 14.3045Z" fill="white" class="fill-current"/>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M17.1641 13.5915C15.7321 14.9569 13.7827 15.7971 11.635 15.7971C9.48726 15.7971 7.53784 14.9569 6.10581 13.5915C5.8592 13.5304 5.61259 13.47 5.37309 13.4394C5.13359 13.4088 4.9019 13.4088 4.68585 13.4422C4.47051 13.4749 4.27152 13.5418 4.03913 13.6249C3.80673 13.7074 3.54165 13.8069 3.20975 14.0059C2.87857 14.2049 2.47988 14.5034 2.09895 15.0017C1.71731 15.4985 1.35273 16.1958 1.02084 17.0253C0.688946 17.854 0.390458 18.8164 0.224867 19.7454C0.0592772 20.6737 0.0258748 21.57 0.00952903 22.2495C-0.00752747 22.9297 -0.00752747 23.3945 0.0592772 23.8423C0.125371 24.2901 0.257559 24.7209 0.556758 25.1523C0.855247 25.5837 1.31933 26.0152 1.86656 26.3464C2.41378 26.6783 3.04416 26.9108 3.90694 27.0266C4.769 27.1425 5.86346 27.1425 7.19032 27.1425H11.038H11.635H12.2319H16.0796C17.4064 27.1425 18.5009 27.1425 19.363 27.0266C20.2257 26.9108 20.8561 26.6783 21.4034 26.3464C21.9506 26.0152 22.4147 25.5837 22.7132 25.1523C23.0124 24.7209 23.1445 24.2901 23.2106 23.8423C23.2774 23.3945 23.2774 22.9297 23.2604 22.2495C23.244 21.57 23.2106 20.6737 23.045 19.7454C22.8795 18.8164 22.581 17.854 22.2491 17.0253C21.9172 16.1958 21.5526 15.4985 21.171 15.0017C20.79 14.5034 20.3913 14.2049 20.0602 14.0059C19.7283 13.8069 19.4632 13.7074 19.2308 13.6249C18.9984 13.5418 18.7994 13.4749 18.5841 13.4422C18.368 13.4088 18.1363 13.4088 17.8968 13.4394C17.6573 13.47 17.4107 13.5304 17.1641 13.5915Z" fill="white" class="fill-current"/>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M18.4239 11.0739C19.5558 12.1074 21.063 12.7385 22.7166 12.7385C26.2333 12.7385 29.0843 9.88691 29.0843 6.36927C29.0843 2.85164 26.2333 0 22.7166 0C20.4583 0 18.4736 1.17634 17.3438 2.94973C18.6186 4.11398 19.4187 5.79141 19.4187 7.65436C19.4187 8.91243 19.0535 10.0866 18.4239 11.0739Z" fill="white" class="fill-current"/>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M27.8933 12.2609C26.5034 13.585 24.6271 14.4159 22.5547 14.4643L22.7836 14.7386C23.1654 15.2355 23.5301 15.9327 23.8621 16.7622C24.1942 17.591 24.4928 18.5534 24.6584 19.4824C24.8241 20.4106 24.8575 21.3069 24.8738 21.9864C24.8909 22.6666 24.8909 23.1315 24.8241 23.5793C24.758 24.0271 24.6257 24.4578 24.3264 24.8892C24.1039 25.2105 23.7896 25.5325 23.4178 25.8118H26.8084C28.1357 25.8118 29.2306 25.8118 30.093 25.696C30.9561 25.5801 31.5867 25.3477 32.1342 25.0158C32.6816 24.6845 33.1459 24.2531 33.4445 23.8217C33.7438 23.3902 33.876 22.9595 33.9421 22.5117C34.009 22.0639 34.009 21.5991 33.9919 20.9188C33.9755 20.2393 33.9421 19.343 33.7765 18.4148C33.6108 17.4858 33.3122 16.5234 32.9802 15.6946C32.6482 14.8652 32.2835 14.1679 31.9017 13.671C31.5206 13.1728 31.1218 12.8743 30.7904 12.6752C30.4584 12.4762 30.1932 12.3767 29.9608 12.2943C29.7283 12.2111 29.5292 12.1443 29.3138 12.1116C29.0976 12.0782 28.8659 12.0782 28.6263 12.1088C28.3867 12.1393 28.14 12.1997 27.8933 12.2609Z" fill="white" class="fill-current"/>
+                        </svg>
+                    </div>
+                    <div class="box-content">
+                        <h5 class="mb-3">Members, Friends</h5>
+                        <p>Members, Friends Connection ( like followers ), Private Message</p>
+                    </div>
+                </div>
+                <div class="card flex flex-col md:flex-row gap-9 p-10">
+                    <div class="box-image shadow-danger gradient-danger">
+                        <svg width="34" height="21" viewBox="0 0 34 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M17.1936 10.7498C19.8371 10.7498 21.9801 8.60676 21.9801 5.96322C21.9801 3.31967 19.8371 1.17664 17.1936 1.17664C14.55 1.17664 12.407 3.31967 12.407 5.96322C12.407 8.60676 14.55 10.7498 17.1936 10.7498Z" fill="white" class="fill-current"/>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M21.3475 10.2141C20.2713 11.2402 18.8063 11.8716 17.1923 11.8716C15.5783 11.8716 14.1133 11.2402 13.0371 10.2141C12.8517 10.1682 12.6664 10.1228 12.4864 10.0998C12.3064 10.0768 12.1323 10.0768 11.97 10.1019C11.8081 10.1265 11.6586 10.1767 11.4839 10.2392C11.3093 10.3012 11.1101 10.3759 10.8607 10.5255C10.6118 10.6751 10.3121 10.8994 10.0259 11.2739C9.73907 11.6472 9.46508 12.1712 9.21566 12.7946C8.96624 13.4174 8.74192 14.1407 8.61748 14.8388C8.49303 15.5364 8.46793 16.21 8.45565 16.7207C8.44283 17.2319 8.44283 17.5812 8.49303 17.9177C8.5427 18.2542 8.64204 18.5779 8.8669 18.9022C9.09121 19.2264 9.43998 19.5506 9.85122 19.7995C10.2625 20.049 10.7362 20.2237 11.3846 20.3107C12.0324 20.3978 12.8549 20.3978 13.8521 20.3978H16.7437H17.1923H17.6409H20.5325C21.5296 20.3978 22.3521 20.3978 23 20.3107C23.6484 20.2237 24.1221 20.049 24.5334 19.7995C24.9446 19.5506 25.2934 19.2264 25.5177 18.9022C25.7425 18.5779 25.8419 18.2542 25.8915 17.9177C25.9417 17.5812 25.9417 17.2319 25.9289 16.7207C25.9166 16.21 25.8915 15.5364 25.7671 14.8388C25.6427 14.1407 25.4183 13.4174 25.1689 12.7946C24.9195 12.1712 24.6455 11.6472 24.3587 11.2739C24.0724 10.8994 23.7728 10.6751 23.5239 10.5255C23.2745 10.3759 23.0753 10.3012 22.9006 10.2392C22.726 10.1767 22.5764 10.1265 22.4146 10.1019C22.2523 10.0768 22.0781 10.0768 21.8982 10.0998C21.7182 10.1228 21.5328 10.1682 21.3475 10.2141Z" fill="white" class="fill-current"/>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M22.2929 8.32212C23.1436 9.09879 24.2763 9.57312 25.519 9.57312C28.1618 9.57312 30.3043 7.43008 30.3043 4.78654C30.3043 2.14299 28.1618 -4.57764e-05 25.519 -4.57764e-05C23.8218 -4.57764e-05 22.3303 0.883984 21.4812 2.21671C22.4392 3.09166 23.0406 4.35227 23.0406 5.75229C23.0406 6.69775 22.7661 7.58018 22.2929 8.32212Z" fill="white" class="fill-current"/>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M11.7071 8.32212C10.8564 9.09879 9.72372 9.57312 8.48105 9.57312C5.83816 9.57312 3.69566 7.43008 3.69566 4.78654C3.69566 2.14299 5.83816 -4.57764e-05 8.48105 -4.57764e-05C10.1782 -4.57764e-05 11.6697 0.883984 12.5188 2.21671C11.5608 3.09166 10.9594 4.35227 10.9594 5.75229C10.9594 6.69775 11.2339 7.58018 11.7071 8.32212Z" fill="white" class="fill-current"/>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M29.4097 9.21418C28.3652 10.2093 26.9552 10.8337 25.3977 10.8701L25.5697 11.0763C25.8567 11.4496 26.1308 11.9736 26.3803 12.597C26.6298 13.2198 26.8542 13.9431 26.9787 14.6412C27.1032 15.3388 27.1283 16.0124 27.1406 16.5231C27.1534 17.0342 27.1534 17.3836 27.1032 17.7201C27.0535 18.0566 26.9541 18.3803 26.7292 18.7046C26.5619 18.946 26.3258 19.188 26.0463 19.3979H28.5944C29.5919 19.3979 30.4147 19.3979 31.0628 19.3108C31.7115 19.2238 32.1854 19.0491 32.5968 18.7996C33.0082 18.5507 33.3571 18.2265 33.5815 17.9022C33.8064 17.578 33.9058 17.2543 33.9555 16.9178C34.0057 16.5813 34.0057 16.2319 33.9929 15.7207C33.9806 15.2101 33.9555 14.5365 33.831 13.8389C33.7065 13.1408 33.4821 12.4175 33.2326 11.7947C32.9831 11.1713 32.709 10.6473 32.4221 10.2739C32.1357 9.8995 31.836 9.67516 31.587 9.52559C31.3375 9.37603 31.1382 9.30125 30.9635 9.23929C30.7887 9.17679 30.6391 9.12658 30.4772 9.10201C30.3148 9.0769 30.1406 9.0769 29.9606 9.09987C29.7805 9.12284 29.5951 9.16824 29.4097 9.21418Z" fill="white" class="fill-current"/>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M4.59028 9.21418C5.63482 10.2093 7.04483 10.8337 8.60229 10.8701L8.43025 11.0763C8.14334 11.4496 7.86924 11.9736 7.61973 12.597C7.37021 13.2198 7.14581 13.9431 7.02132 14.6412C6.89683 15.3388 6.87171 16.0124 6.85943 16.5231C6.8466 17.0342 6.8466 17.3836 6.89683 17.7201C6.94652 18.0566 7.04589 18.3803 7.27083 18.7046C7.43807 18.946 7.67423 19.188 7.95366 19.3979H5.40561C4.40808 19.3979 3.58527 19.3979 2.93717 19.3108C2.28854 19.2238 1.81462 19.0491 1.40321 18.7996C0.991804 18.5507 0.64291 18.2265 0.418506 17.9022C0.193567 17.578 0.0941887 17.2543 0.0444994 16.9178C-0.00572395 16.5813 -0.00572395 16.2319 0.00709915 15.7207C0.0193872 15.2101 0.0444994 14.5365 0.16899 13.8389C0.293481 13.1408 0.517884 12.4175 0.7674 11.7947C1.01692 11.1713 1.29101 10.6473 1.57792 10.2739C1.86431 9.8995 2.16405 9.67516 2.41303 9.52559C2.66254 9.37603 2.86183 9.30125 3.03655 9.23929C3.21126 9.17679 3.36087 9.12658 3.52276 9.10201C3.68518 9.0769 3.85936 9.0769 4.03942 9.09987C4.21948 9.12284 4.40488 9.16824 4.59028 9.21418Z" fill="white" class="fill-current"/>
+                        </svg>    
+                    </div>
+                    <div class="box-content">
+                        <h5 class="mb-3">Groups</h5>
+                        <p>Your users can create groups to let other users to join and talk</p>
+                    </div>
+                </div>
+                <div class="card flex flex-col md:flex-row gap-9 p-10">
+                    <div class="box-image shadow-warning gradient-warning">
+                        <svg width="35" height="28" viewBox="0 0 35 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M11.6349 14.3045C15.1525 14.3045 18.0042 11.4528 18.0042 7.93519C18.0042 4.41756 15.1525 1.56592 11.6349 1.56592C8.11726 1.56592 5.26562 4.41756 5.26562 7.93519C5.26562 11.4528 8.11726 14.3045 11.6349 14.3045Z" fill="white" class="fill-current"/>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M17.1641 13.5915C15.7321 14.9569 13.7827 15.7971 11.635 15.7971C9.48726 15.7971 7.53784 14.9569 6.10581 13.5915C5.8592 13.5304 5.61259 13.47 5.37309 13.4394C5.13359 13.4088 4.9019 13.4088 4.68585 13.4422C4.47051 13.4749 4.27152 13.5418 4.03913 13.6249C3.80673 13.7074 3.54165 13.8069 3.20975 14.0059C2.87857 14.2049 2.47988 14.5034 2.09895 15.0017C1.71731 15.4985 1.35273 16.1958 1.02084 17.0253C0.688946 17.854 0.390458 18.8164 0.224867 19.7454C0.0592772 20.6737 0.0258748 21.57 0.00952903 22.2495C-0.00752747 22.9297 -0.00752747 23.3945 0.0592772 23.8423C0.125371 24.2901 0.257559 24.7209 0.556758 25.1523C0.855247 25.5837 1.31933 26.0152 1.86656 26.3464C2.41378 26.6783 3.04416 26.9108 3.90694 27.0266C4.769 27.1425 5.86346 27.1425 7.19032 27.1425H11.038H11.635H12.2319H16.0796C17.4064 27.1425 18.5009 27.1425 19.363 27.0266C20.2257 26.9108 20.8561 26.6783 21.4034 26.3464C21.9506 26.0152 22.4147 25.5837 22.7132 25.1523C23.0124 24.7209 23.1445 24.2901 23.2106 23.8423C23.2774 23.3945 23.2774 22.9297 23.2604 22.2495C23.244 21.57 23.2106 20.6737 23.045 19.7454C22.8795 18.8164 22.581 17.854 22.2491 17.0253C21.9172 16.1958 21.5526 15.4985 21.171 15.0017C20.79 14.5034 20.3913 14.2049 20.0602 14.0059C19.7283 13.8069 19.4632 13.7074 19.2308 13.6249C18.9984 13.5418 18.7994 13.4749 18.5841 13.4422C18.368 13.4088 18.1363 13.4088 17.8968 13.4394C17.6573 13.47 17.4107 13.5304 17.1641 13.5915Z" fill="white" class="fill-current"/>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M18.4239 11.0739C19.5558 12.1074 21.063 12.7385 22.7166 12.7385C26.2333 12.7385 29.0843 9.88691 29.0843 6.36927C29.0843 2.85164 26.2333 0 22.7166 0C20.4583 0 18.4736 1.17634 17.3438 2.94973C18.6186 4.11398 19.4187 5.79141 19.4187 7.65436C19.4187 8.91243 19.0535 10.0866 18.4239 11.0739Z" fill="white" class="fill-current"/>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M27.8933 12.2609C26.5034 13.585 24.6271 14.4159 22.5547 14.4643L22.7836 14.7386C23.1654 15.2355 23.5301 15.9327 23.8621 16.7622C24.1942 17.591 24.4928 18.5534 24.6584 19.4824C24.8241 20.4106 24.8575 21.3069 24.8738 21.9864C24.8909 22.6666 24.8909 23.1315 24.8241 23.5793C24.758 24.0271 24.6257 24.4578 24.3264 24.8892C24.1039 25.2105 23.7896 25.5325 23.4178 25.8118H26.8084C28.1357 25.8118 29.2306 25.8118 30.093 25.696C30.9561 25.5801 31.5867 25.3477 32.1342 25.0158C32.6816 24.6845 33.1459 24.2531 33.4445 23.8217C33.7438 23.3902 33.876 22.9595 33.9421 22.5117C34.009 22.0639 34.009 21.5991 33.9919 20.9188C33.9755 20.2393 33.9421 19.343 33.7765 18.4148C33.6108 17.4858 33.3122 16.5234 32.9802 15.6946C32.6482 14.8652 32.2835 14.1679 31.9017 13.671C31.5206 13.1728 31.1218 12.8743 30.7904 12.6752C30.4584 12.4762 30.1932 12.3767 29.9608 12.2943C29.7283 12.2111 29.5292 12.1443 29.3138 12.1116C29.0976 12.0782 28.8659 12.0782 28.6263 12.1088C28.3867 12.1393 28.14 12.1997 27.8933 12.2609Z" fill="white" class="fill-current"/>
+                        </svg>
+                    </div>
+                    <div class="box-content">
+                        <h5 class="mb-3">Members, Friends</h5>
+                        <p>Members, Friends Connection ( like followers ), Private Message</p>
+                    </div>
+                </div>
+                <div class="card flex flex-col md:flex-row gap-9 p-10">
+                    <div class="box-image shadow-blue gradient-blue">
+                        <svg width="35" height="28" viewBox="0 0 35 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M11.6349 14.3045C15.1525 14.3045 18.0042 11.4528 18.0042 7.93519C18.0042 4.41756 15.1525 1.56592 11.6349 1.56592C8.11726 1.56592 5.26562 4.41756 5.26562 7.93519C5.26562 11.4528 8.11726 14.3045 11.6349 14.3045Z" fill="white" class="fill-current"/>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M17.1641 13.5915C15.7321 14.9569 13.7827 15.7971 11.635 15.7971C9.48726 15.7971 7.53784 14.9569 6.10581 13.5915C5.8592 13.5304 5.61259 13.47 5.37309 13.4394C5.13359 13.4088 4.9019 13.4088 4.68585 13.4422C4.47051 13.4749 4.27152 13.5418 4.03913 13.6249C3.80673 13.7074 3.54165 13.8069 3.20975 14.0059C2.87857 14.2049 2.47988 14.5034 2.09895 15.0017C1.71731 15.4985 1.35273 16.1958 1.02084 17.0253C0.688946 17.854 0.390458 18.8164 0.224867 19.7454C0.0592772 20.6737 0.0258748 21.57 0.00952903 22.2495C-0.00752747 22.9297 -0.00752747 23.3945 0.0592772 23.8423C0.125371 24.2901 0.257559 24.7209 0.556758 25.1523C0.855247 25.5837 1.31933 26.0152 1.86656 26.3464C2.41378 26.6783 3.04416 26.9108 3.90694 27.0266C4.769 27.1425 5.86346 27.1425 7.19032 27.1425H11.038H11.635H12.2319H16.0796C17.4064 27.1425 18.5009 27.1425 19.363 27.0266C20.2257 26.9108 20.8561 26.6783 21.4034 26.3464C21.9506 26.0152 22.4147 25.5837 22.7132 25.1523C23.0124 24.7209 23.1445 24.2901 23.2106 23.8423C23.2774 23.3945 23.2774 22.9297 23.2604 22.2495C23.244 21.57 23.2106 20.6737 23.045 19.7454C22.8795 18.8164 22.581 17.854 22.2491 17.0253C21.9172 16.1958 21.5526 15.4985 21.171 15.0017C20.79 14.5034 20.3913 14.2049 20.0602 14.0059C19.7283 13.8069 19.4632 13.7074 19.2308 13.6249C18.9984 13.5418 18.7994 13.4749 18.5841 13.4422C18.368 13.4088 18.1363 13.4088 17.8968 13.4394C17.6573 13.47 17.4107 13.5304 17.1641 13.5915Z" fill="white" class="fill-current"/>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M18.4239 11.0739C19.5558 12.1074 21.063 12.7385 22.7166 12.7385C26.2333 12.7385 29.0843 9.88691 29.0843 6.36927C29.0843 2.85164 26.2333 0 22.7166 0C20.4583 0 18.4736 1.17634 17.3438 2.94973C18.6186 4.11398 19.4187 5.79141 19.4187 7.65436C19.4187 8.91243 19.0535 10.0866 18.4239 11.0739Z" fill="white" class="fill-current"/>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M27.8933 12.2609C26.5034 13.585 24.6271 14.4159 22.5547 14.4643L22.7836 14.7386C23.1654 15.2355 23.5301 15.9327 23.8621 16.7622C24.1942 17.591 24.4928 18.5534 24.6584 19.4824C24.8241 20.4106 24.8575 21.3069 24.8738 21.9864C24.8909 22.6666 24.8909 23.1315 24.8241 23.5793C24.758 24.0271 24.6257 24.4578 24.3264 24.8892C24.1039 25.2105 23.7896 25.5325 23.4178 25.8118H26.8084C28.1357 25.8118 29.2306 25.8118 30.093 25.696C30.9561 25.5801 31.5867 25.3477 32.1342 25.0158C32.6816 24.6845 33.1459 24.2531 33.4445 23.8217C33.7438 23.3902 33.876 22.9595 33.9421 22.5117C34.009 22.0639 34.009 21.5991 33.9919 20.9188C33.9755 20.2393 33.9421 19.343 33.7765 18.4148C33.6108 17.4858 33.3122 16.5234 32.9802 15.6946C32.6482 14.8652 32.2835 14.1679 31.9017 13.671C31.5206 13.1728 31.1218 12.8743 30.7904 12.6752C30.4584 12.4762 30.1932 12.3767 29.9608 12.2943C29.7283 12.2111 29.5292 12.1443 29.3138 12.1116C29.0976 12.0782 28.8659 12.0782 28.6263 12.1088C28.3867 12.1393 28.14 12.1997 27.8933 12.2609Z" fill="white" class="fill-current"/>
+                        </svg>
+                    </div>
+                    <div class="box-content">
+                        <h5 class="mb-3">Members, Friends</h5>
+                        <p>Members, Friends Connection ( like followers ), Private Message</p>
+                    </div>
+                </div>
+                <div class="card flex flex-col md:flex-row gap-9 p-10">
+                    <div class="box-image shadow-danger gradient-danger">
+                        <svg width="35" height="28" viewBox="0 0 35 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M11.6349 14.3045C15.1525 14.3045 18.0042 11.4528 18.0042 7.93519C18.0042 4.41756 15.1525 1.56592 11.6349 1.56592C8.11726 1.56592 5.26562 4.41756 5.26562 7.93519C5.26562 11.4528 8.11726 14.3045 11.6349 14.3045Z" fill="white" class="fill-current"/>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M17.1641 13.5915C15.7321 14.9569 13.7827 15.7971 11.635 15.7971C9.48726 15.7971 7.53784 14.9569 6.10581 13.5915C5.8592 13.5304 5.61259 13.47 5.37309 13.4394C5.13359 13.4088 4.9019 13.4088 4.68585 13.4422C4.47051 13.4749 4.27152 13.5418 4.03913 13.6249C3.80673 13.7074 3.54165 13.8069 3.20975 14.0059C2.87857 14.2049 2.47988 14.5034 2.09895 15.0017C1.71731 15.4985 1.35273 16.1958 1.02084 17.0253C0.688946 17.854 0.390458 18.8164 0.224867 19.7454C0.0592772 20.6737 0.0258748 21.57 0.00952903 22.2495C-0.00752747 22.9297 -0.00752747 23.3945 0.0592772 23.8423C0.125371 24.2901 0.257559 24.7209 0.556758 25.1523C0.855247 25.5837 1.31933 26.0152 1.86656 26.3464C2.41378 26.6783 3.04416 26.9108 3.90694 27.0266C4.769 27.1425 5.86346 27.1425 7.19032 27.1425H11.038H11.635H12.2319H16.0796C17.4064 27.1425 18.5009 27.1425 19.363 27.0266C20.2257 26.9108 20.8561 26.6783 21.4034 26.3464C21.9506 26.0152 22.4147 25.5837 22.7132 25.1523C23.0124 24.7209 23.1445 24.2901 23.2106 23.8423C23.2774 23.3945 23.2774 22.9297 23.2604 22.2495C23.244 21.57 23.2106 20.6737 23.045 19.7454C22.8795 18.8164 22.581 17.854 22.2491 17.0253C21.9172 16.1958 21.5526 15.4985 21.171 15.0017C20.79 14.5034 20.3913 14.2049 20.0602 14.0059C19.7283 13.8069 19.4632 13.7074 19.2308 13.6249C18.9984 13.5418 18.7994 13.4749 18.5841 13.4422C18.368 13.4088 18.1363 13.4088 17.8968 13.4394C17.6573 13.47 17.4107 13.5304 17.1641 13.5915Z" fill="white" class="fill-current"/>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M18.4239 11.0739C19.5558 12.1074 21.063 12.7385 22.7166 12.7385C26.2333 12.7385 29.0843 9.88691 29.0843 6.36927C29.0843 2.85164 26.2333 0 22.7166 0C20.4583 0 18.4736 1.17634 17.3438 2.94973C18.6186 4.11398 19.4187 5.79141 19.4187 7.65436C19.4187 8.91243 19.0535 10.0866 18.4239 11.0739Z" fill="white" class="fill-current"/>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M27.8933 12.2609C26.5034 13.585 24.6271 14.4159 22.5547 14.4643L22.7836 14.7386C23.1654 15.2355 23.5301 15.9327 23.8621 16.7622C24.1942 17.591 24.4928 18.5534 24.6584 19.4824C24.8241 20.4106 24.8575 21.3069 24.8738 21.9864C24.8909 22.6666 24.8909 23.1315 24.8241 23.5793C24.758 24.0271 24.6257 24.4578 24.3264 24.8892C24.1039 25.2105 23.7896 25.5325 23.4178 25.8118H26.8084C28.1357 25.8118 29.2306 25.8118 30.093 25.696C30.9561 25.5801 31.5867 25.3477 32.1342 25.0158C32.6816 24.6845 33.1459 24.2531 33.4445 23.8217C33.7438 23.3902 33.876 22.9595 33.9421 22.5117C34.009 22.0639 34.009 21.5991 33.9919 20.9188C33.9755 20.2393 33.9421 19.343 33.7765 18.4148C33.6108 17.4858 33.3122 16.5234 32.9802 15.6946C32.6482 14.8652 32.2835 14.1679 31.9017 13.671C31.5206 13.1728 31.1218 12.8743 30.7904 12.6752C30.4584 12.4762 30.1932 12.3767 29.9608 12.2943C29.7283 12.2111 29.5292 12.1443 29.3138 12.1116C29.0976 12.0782 28.8659 12.0782 28.6263 12.1088C28.3867 12.1393 28.14 12.1997 27.8933 12.2609Z" fill="white" class="fill-current"/>
+                        </svg>
+                    </div>
+                    <div class="box-content">
+                        <h5 class="mb-3">Members, Friends</h5>
+                        <p>Members, Friends Connection ( like followers ), Private Message</p>
+                    </div>
+                </div>
+                <div class="card flex flex-col md:flex-row gap-9 p-10">
+                    <div class="box-image shadow-warning gradient-warning">
+                        <svg width="35" height="28" viewBox="0 0 35 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M11.6349 14.3045C15.1525 14.3045 18.0042 11.4528 18.0042 7.93519C18.0042 4.41756 15.1525 1.56592 11.6349 1.56592C8.11726 1.56592 5.26562 4.41756 5.26562 7.93519C5.26562 11.4528 8.11726 14.3045 11.6349 14.3045Z" fill="white" class="fill-current"/>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M17.1641 13.5915C15.7321 14.9569 13.7827 15.7971 11.635 15.7971C9.48726 15.7971 7.53784 14.9569 6.10581 13.5915C5.8592 13.5304 5.61259 13.47 5.37309 13.4394C5.13359 13.4088 4.9019 13.4088 4.68585 13.4422C4.47051 13.4749 4.27152 13.5418 4.03913 13.6249C3.80673 13.7074 3.54165 13.8069 3.20975 14.0059C2.87857 14.2049 2.47988 14.5034 2.09895 15.0017C1.71731 15.4985 1.35273 16.1958 1.02084 17.0253C0.688946 17.854 0.390458 18.8164 0.224867 19.7454C0.0592772 20.6737 0.0258748 21.57 0.00952903 22.2495C-0.00752747 22.9297 -0.00752747 23.3945 0.0592772 23.8423C0.125371 24.2901 0.257559 24.7209 0.556758 25.1523C0.855247 25.5837 1.31933 26.0152 1.86656 26.3464C2.41378 26.6783 3.04416 26.9108 3.90694 27.0266C4.769 27.1425 5.86346 27.1425 7.19032 27.1425H11.038H11.635H12.2319H16.0796C17.4064 27.1425 18.5009 27.1425 19.363 27.0266C20.2257 26.9108 20.8561 26.6783 21.4034 26.3464C21.9506 26.0152 22.4147 25.5837 22.7132 25.1523C23.0124 24.7209 23.1445 24.2901 23.2106 23.8423C23.2774 23.3945 23.2774 22.9297 23.2604 22.2495C23.244 21.57 23.2106 20.6737 23.045 19.7454C22.8795 18.8164 22.581 17.854 22.2491 17.0253C21.9172 16.1958 21.5526 15.4985 21.171 15.0017C20.79 14.5034 20.3913 14.2049 20.0602 14.0059C19.7283 13.8069 19.4632 13.7074 19.2308 13.6249C18.9984 13.5418 18.7994 13.4749 18.5841 13.4422C18.368 13.4088 18.1363 13.4088 17.8968 13.4394C17.6573 13.47 17.4107 13.5304 17.1641 13.5915Z" fill="white" class="fill-current"/>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M18.4239 11.0739C19.5558 12.1074 21.063 12.7385 22.7166 12.7385C26.2333 12.7385 29.0843 9.88691 29.0843 6.36927C29.0843 2.85164 26.2333 0 22.7166 0C20.4583 0 18.4736 1.17634 17.3438 2.94973C18.6186 4.11398 19.4187 5.79141 19.4187 7.65436C19.4187 8.91243 19.0535 10.0866 18.4239 11.0739Z" fill="white" class="fill-current"/>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M27.8933 12.2609C26.5034 13.585 24.6271 14.4159 22.5547 14.4643L22.7836 14.7386C23.1654 15.2355 23.5301 15.9327 23.8621 16.7622C24.1942 17.591 24.4928 18.5534 24.6584 19.4824C24.8241 20.4106 24.8575 21.3069 24.8738 21.9864C24.8909 22.6666 24.8909 23.1315 24.8241 23.5793C24.758 24.0271 24.6257 24.4578 24.3264 24.8892C24.1039 25.2105 23.7896 25.5325 23.4178 25.8118H26.8084C28.1357 25.8118 29.2306 25.8118 30.093 25.696C30.9561 25.5801 31.5867 25.3477 32.1342 25.0158C32.6816 24.6845 33.1459 24.2531 33.4445 23.8217C33.7438 23.3902 33.876 22.9595 33.9421 22.5117C34.009 22.0639 34.009 21.5991 33.9919 20.9188C33.9755 20.2393 33.9421 19.343 33.7765 18.4148C33.6108 17.4858 33.3122 16.5234 32.9802 15.6946C32.6482 14.8652 32.2835 14.1679 31.9017 13.671C31.5206 13.1728 31.1218 12.8743 30.7904 12.6752C30.4584 12.4762 30.1932 12.3767 29.9608 12.2943C29.7283 12.2111 29.5292 12.1443 29.3138 12.1116C29.0976 12.0782 28.8659 12.0782 28.6263 12.1088C28.3867 12.1393 28.14 12.1997 27.8933 12.2609Z" fill="white" class="fill-current"/>
+                        </svg>
+                    </div>
+                    <div class="box-content">
+                        <h5 class="mb-3">Members, Friends</h5>
+                        <p>Members, Friends Connection ( like followers ), Private Message</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="members">
+        <div class="container pb-[0!important] flex flex-col items-center">
+            <div class="box-title mb-10 text-center">
+                <span class="mb-2">Valuable Team</span>
+                <h2 class="mb-5">Our Active Members</h2>
+                <p>when an unknown printer took a galley of type and meeting fari scrambled it.</p>
+            </div>
+
+            <div class="w-full md:w-fit box-action rounded-xl bg-myBlue/10 flex flex-col md:flex-row mb-11 p-2 gap-2">
+                <button class="w-full md:w-40 btn-blue">Newst</button>
+                <button class="w-full md:w-40 btn-blue">Popular</button>
+                <button class="w-full md:w-40 btn-blue">Active</button>
+            </div>
+        </div>
+
+        <div class="container pt-[0!important]">
+            <div class="box-cards grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+                <div class="card flex flex-col items-center p-8">
+                    <div class="box-profile relative w-40 h-40 mb-8">
+
+                        <img src="assets/images/profile-outline.png" alt="" class="absolute">
+                        <div class="box-profile absolute w-full h-full p-3">
+                            <img src="assets/images/member-1.png" alt="" class="profile bg-[#E2EEFF] object-cover rounded-full w-full h-full">
+                        </div>
+                        <img src="assets/images/verified.png" alt="" class="verified absolute left-0 bottom-0 right-0 mx-auto">
+                        
+                    </div>
+    
+                    <div class="box-content text-center">
+                        <h5 class="mb-3">Fahim Rahman</h5>
+                        <p>@rahman</p>
+                    </div>
+                </div>
+
+                <div class="card flex flex-col items-center p-8">
+                    <div class="box-profile relative w-40 h-40 mb-8">
+
+                        <img src="assets/images/profile-outline.png" alt="" class="absolute">
+                        <div class="box-profile absolute w-full h-full p-3">
+                            <img src="assets/images/member-1.png" alt="" class="profile bg-[#E2EEFF] object-cover rounded-full w-full h-full">
+                        </div>
+                        <img src="assets/images/verified.png" alt="" class="verified absolute left-0 bottom-0 right-0 mx-auto">
+                        
+                    </div>
+    
+                    <div class="box-content text-center">
+                        <h5 class="mb-3">Fahim Rahman</h5>
+                        <p>@rahman</p>
+                    </div>
+                </div>
+
+                <div class="card flex flex-col items-center p-8">
+                    <div class="box-profile relative w-40 h-40 mb-8">
+
+                        <img src="assets/images/profile-outline.png" alt="" class="absolute">
+                        <div class="box-profile absolute w-full h-full p-3">
+                            <img src="assets/images/member-1.png" alt="" class="profile bg-[#E2EEFF] object-cover rounded-full w-full h-full">
+                        </div>
+                        <img src="assets/images/verified.png" alt="" class="verified absolute left-0 bottom-0 right-0 mx-auto">
+                        
+                    </div>
+    
+                    <div class="box-content text-center">
+                        <h5 class="mb-3">Fahim Rahman</h5>
+                        <p>@rahman</p>
+                    </div>
+                </div>
+
+                <div class="card flex flex-col items-center p-8">
+                    <div class="box-profile relative w-40 h-40 mb-8">
+
+                        <img src="assets/images/profile-outline.png" alt="" class="absolute">
+                        <div class="box-profile absolute w-full h-full p-3">
+                            <img src="assets/images/member-1.png" alt="" class="profile bg-[#E2EEFF] object-cover rounded-full w-full h-full">
+                        </div>
+                        <img src="assets/images/verified.png" alt="" class="verified absolute left-0 bottom-0 right-0 mx-auto">
+                        
+                    </div>
+    
+                    <div class="box-content text-center">
+                        <h5 class="mb-3">Fahim Rahman</h5>
+                        <p>@rahman</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer id="footer" class="bg-footerDark">
+        <div class="container py-8 px-5 flex flex-col lg:flex-row lg:justify-between items-center gap-5">
+            <div class="box-title">
+                <p>Besnik Creative Agency.</p>
+            </div>
+
+            <div class="box-image">
+                <img src="assets/images/logo-light.png" alt="Logo Light">
+            </div>
+
+            <div class="box-icons flex gap-2">
+                <a href="#!" class="icon rounded-full bg-white p-2">
+                    <img src="assets/images/twitter.svg" alt="Twitter" class="w-9 h-9">
+                </a href="#!">
+                <a href="#!" class="icon rounded-full bg-white p-2">
+                    <img src="assets/images/instagram.svg" alt="Instagram" class="w-9 h-9">
+                </a href="#!">
+                <a href="#!" class="icon rounded-full bg-white p-2">
+                    <img src="assets/images/facebook.svg" alt="Facebook" class="w-9 h-9">
+                </a href="#!">
+                <a href="#!" class="icon rounded-full bg-white p-2">
+                    <img src="assets/images/linkedin.svg" alt="Linkedin" class="w-9 h-9">
+                </a href="#!">
+            </div>
+        </div>
+    </footer>
+
+    <!-- Flowbite -->
+    <script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"></script>
+    <script type="text/javascript">
+        /** 
+            Define Variable
+        **/
+
+        // Get Button Element
+        let button = document.getElementById('button-collapsed')
+
+        // Get Screen Width
+        let screenWidth = window.screen.width
+        
+        // Get Element to Change
+        let header = document.getElementById('header')
+        let menuCollapsed = document.getElementById('navbar-defaults')
+        let menuClass = menuCollapsed.classList
+
+        // Handle Button On Click
+        button.onclick = function () {
+
+            detectCollapsed()
+
+        }
+
+        // Scroll Listener
+        window.onscroll = function () {
+
+            // Detect Scroll Count
+            let scrollY = window.scrollY
+
+            // Scroll Conditions
+            if (scrollY > 80) {
+                bgBlur()
+            } else {
+                bgTransparent()
+                detectCollapsed()
+            }
+
+        }
+
+        // Detect Collapsed Menu
+        function detectCollapsed() {
+            // Screen Conditions
+            setTimeout(() => {
+                if (screenWidth < 1024) {
+                    if (menuClass.contains('hidden')) {
+                        bgTransparent()
+                    } else {
+                        bgBlur()
+                    }
+                }
+            }, 100);
+        }
+
+        // Add Class Transparent
+        function bgTransparent() {
+            header.classList.add('bg-transparent')
+            header.classList.remove('bg-scroll-offset')
+        }
+
+        // Add Class Blur
+        function bgBlur(params) {
+            header.classList.add('bg-scroll-offset')
+            header.classList.remove('bg-transparent')
+        }
+    </script>
+
+</body>
+
+</html>

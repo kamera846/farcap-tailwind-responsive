@@ -1,0 +1,138 @@
+html {
+    scroll-behavior: smooth;
+}
+
+input {
+    font-family: 'Inter';
+}
+
+/* .container {
+    padding: 0 20px!important;
+} */
+
+section .container {
+    padding: 82px 20px;
+}
+
+span {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 18px;
+    color: #217BF4;
+}
+
+p {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 28px;
+    color: #656464;
+}
+
+.box-title {
+    max-width: 515px;
+}
+
+.box-title h1,
+.box-title h2 {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 56px;
+    line-height: 66px;
+    color: #0A093D;
+}
+
+.box-title h2 {
+    font-weight: 600px;
+    font-size: 36px;
+    line-height: 48px;
+}
+
+.btn-blue, 
+.btn-blue-light, 
+.btn-blue-outline {
+    border-radius: 14px;
+    background-color: #217BF4;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    text-align: center;
+    color: #FFFFFF;
+
+    padding: 18px 44px;
+}
+.btn-blue-outline {
+    border: 1px solid #217BF4;
+    background-color: transparent;
+    color: #217BF4;
+}
+.btn-blue-light {
+    color: #217BF4;
+}
+
+.card h5 {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 26px;
+    color: #2F2C4A;
+}
+
+.card p {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 26px;
+    color: #656464;
+}
+
+.card .action {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 16px;
+    color: #4A4A56;
+}
+
+#header .container,
+#nav .container {
+    padding: 0 20px;
+}
+
+#header .menu-navigation a,
+#header .menu-navigation a.active {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 14px;
+    letter-spacing: 0.01em;
+    color: #656464;
+}
+
+#header .menu-navigation a.active {
+    font-weight: 600;
+    color: #2B2B39;
+}
+
+#header .menu-action .search-box {
+    width: 105px;
+    padding: 18px 0;
+    border-bottom: 1px solid #E5E5E5;
+}
+
+#header .menu-action .search-box input {
+    font-size: 12px;
+    padding: 0;
+}
+
+#members .box-action button {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 16px;
+    text-align: center;
+    letter-spacing: 0.01em;
+    color: #2F2C4A;
+}
